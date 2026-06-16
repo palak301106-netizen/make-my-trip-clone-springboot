@@ -1,0 +1,35 @@
+package com.makemytrip.makemytrip.models;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document; // as we are adding monogodb data
+
+@Document(collection = "hotel")
+public class Hotel {
+    @Id
+    private String _id;
+    private String hotelName;
+    private String location;
+    private  double pricePerNight;
+    private  int availableRooms;
+    private String amenities;
+
+    //getters and setters
+    public String getId() {return _id;}
+    public void setId(String _id) {this._id=_id;}
+
+    public String gethotelName() {return hotelName;}
+    public void sethotelName(String hotelName) {this.hotelName=hotelName;}
+
+    public String getLocation() {return location;}
+    public void setLocation(String location) {this.location=location;}
+
+    public double getPricePerNight() {return pricePerNight;}
+    public double  setPricePerNight (double pricePerNight ) {return availableRooms;}
+
+    public int getAvailableRooms(){return availableRooms;}
+    public void setAvailableRooms(int availableRooms) {this.availableRooms=availableRooms;}
+
+    public String getAmenities() {return amenities;}
+    public void setAmenities(String amenities) {this.amenities=amenities;}
+
+
+}
