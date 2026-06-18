@@ -23,7 +23,7 @@ public class Hotel {
     public void setLocation(String location) {this.location=location;}
 
     public double getPricePerNight() {return pricePerNight;}
-    public double  setPricePerNight (double pricePerNight ) {return availableRooms;}
+    public void  setPricePerNight(double pricePerNight) { this.pricePerNight = pricePerNight;}
 
     public int getAvailableRooms(){return availableRooms;}
     public void setAvailableRooms(int availableRooms) {this.availableRooms=availableRooms;}

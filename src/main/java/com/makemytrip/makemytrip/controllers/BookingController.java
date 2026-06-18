@@ -8,7 +8,7 @@ import com.makemytrip.makemytrip.services.BookingService;
 
 @RestController
 @RequestMapping("/booking")
-public class BookingController{
+public class BookingController {
     @Autowired
     private BookingService bookingService;
 
@@ -16,14 +16,16 @@ public class BookingController{
     private UserServices userServices;
 
     @PostMapping("/flight")
-    public Users.Booking bookflight(@RequestParam String useId, @RequestParam String flightId, @RequestParam int seats, @RequestParam double price){
-        return bookingService.bookflight(useId, flightId, seats, price);
+    public Users.Booking bookflight(@RequestParam String userId, @RequestParam String flightId, @RequestParam int seats, @RequestParam double price) {
+        return bookingService.bookflight(userId, flightId, seats, price);
     }
+
     @PostMapping("/hotel")
-    public Users.Booking bookhotel(@RequestParam String useId, @RequestParam String  hotelId, @RequestParam int rooms, @RequestParam double price){
-        return bookingService.bookhotel(useId, hotelId, rooms, price);
+    public Users.Booking bookhotel(@RequestParam String userId, @RequestParam String hotelId, @RequestParam int rooms, @RequestParam double price) {
+        return bookingService.bookhotel(userId, hotelId, rooms, price);
     }
-//   @GetMapping("/{email}")
+
+    //   @GetMapping("/{email}")
 //   public ResponseEntity<Users> getuserbyemail(@PathVariable String email){
 //        Users user= UserServices.getUserByEmail(email);
 //        if(user != null){
@@ -31,14 +33,40 @@ public class BookingController{
 //        }
 //        return ResponseEntity.notFound().build();
 //   }
-@GetMapping("/{email}")
-public ResponseEntity<Users> getuserbyemail(@PathVariable String email) {
-    Users user = userServices.getUserByEmail(email);
+    @GetMapping("/{email}")
+    public ResponseEntity<Users> getuserbyemail(@PathVariable String email) {
+        Users user = userServices.getUserByEmail(email);
 
-    if (user != null) {
-        return ResponseEntity.ok(user);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        }
+
+        return ResponseEntity.notFound().build();
     }
 
-    return ResponseEntity.notFound().build();
-}
+    @PostMapping("/cancel")
+    public Users.Booking cancelBooking(
+            @RequestParam String userId,
+            @RequestParam String bookingId,
+            @RequestParam String reason)
+    {
+
+        return bookingService.cancelBooking(userId, bookingId, reason);
+    }
+
+    @PutMapping("/refund/status")
+    public ResponseEntity<?> updateRefundStatus(
+
+            @RequestParam String userId,
+            @RequestParam String bookingId,
+            @RequestParam String status
+
+    ) {
+
+        Users.Booking booking =
+                bookingService.updateRefundStatus(userId, bookingId, status);
+
+        return ResponseEntity.ok(booking);
+
+    }
 }

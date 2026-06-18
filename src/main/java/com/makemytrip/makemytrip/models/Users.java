@@ -4,6 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document; // as we are addi
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;
 
 @Document(collection = "users")
 
@@ -17,6 +18,14 @@ public class Users {
     private String role;
     private String phoneNumber;
     private List<Booking> bookings = new ArrayList<>();
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
 
     public String getPassword() {
         return password;
@@ -55,6 +64,70 @@ public class Users {
         private String date;
         private int quantity;
         private double totalPrice;
+
+        private String bookingStatus;
+        private String paymentStatus;
+        private String refundStatus;
+        private double refundAmount;
+        private String cancellationReason;
+        private  String cancelledAt;
+        private String expectedRefundDate;
+        //private LocalDateTime bookingDate;
+
+        public String getExpectedRefundDate() {
+            return expectedRefundDate;
+        }
+
+        public void setExpectedRefundDate(String expectedRefundDate) {
+            this.expectedRefundDate = expectedRefundDate;
+        }
+        public String getBookingStatus() {
+            return bookingStatus;
+        }
+
+        public void setBookingStatus(String bookingStatus) {
+            this.bookingStatus = bookingStatus;
+        }
+
+        public String getPaymentStatus() {
+            return paymentStatus;
+        }
+
+        public void setPaymentStatus(String paymentStatus) {
+            this.paymentStatus = paymentStatus;
+        }
+
+        public String getRefundStatus() {
+            return refundStatus;
+        }
+
+        public void setRefundStatus(String refundStatus) {
+            this.refundStatus = refundStatus;
+        }
+
+        public double getRefundAmount() {
+            return refundAmount;
+        }
+
+        public void setRefundAmount(double refundAmount) {
+            this.refundAmount = refundAmount;
+        }
+
+        public String getCancellationReason() {
+            return cancellationReason;
+        }
+
+        public void setCancellationReason(String cancellationReason) {
+            this.cancellationReason = cancellationReason;
+        }
+
+        public  String getCancelledAt() {
+            return cancelledAt;
+        }
+
+        public void setCancelledAt(String cancelledAt) {
+            this.cancelledAt = cancelledAt;
+        }
 
         public String getType() {return type;}
         public void setType(String type) {this.type = type;}

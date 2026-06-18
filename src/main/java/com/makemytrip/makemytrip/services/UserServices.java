@@ -23,24 +23,20 @@ public class UserServices {
 //    }
 public Users login(String email, String password) {
 
-    System.out.println(email);
-    System.out.println(password);
-
     Users user = userRepository.findByEmail(email);
 
-    System.out.println(user);
+    System.out.println("User from DB:");
+    System.out.println("id = " + user.get_id());      // or getId()
+    System.out.println("firstName = " + user.getFirstName());
+    System.out.println("lastName = " + user.getLastName());
+    System.out.println("email = " + user.getEmail());
+    System.out.println("phone = " + user.getPhoneNumber());
+    System.out.println("role = " + user.getRole());
 
-    if(user != null){
+    boolean matched = passwordEncoder.matches(password, user.getPassword());
 
-        System.out.println(user.getPassword());
-
-        boolean matched = passwordEncoder.matches(password, user.getPassword());
-
-        System.out.println(matched);
-
-        if(matched){
-            return user;
-        }
+    if (matched) {
+        return user;
     }
 
     return null;
