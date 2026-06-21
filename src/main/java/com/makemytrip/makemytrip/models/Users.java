@@ -72,7 +72,33 @@ public class Users {
         private String cancellationReason;
         private  String cancelledAt;
         private String expectedRefundDate;
-        //private LocalDateTime bookingDate;
+        private String selectedSeat;
+        private String roomType;
+        private boolean premiumUpgrade;
+
+        public String getSelectedSeat() {
+            return selectedSeat;
+        }
+
+        public void setSelectedSeat(String selectedSeat) {
+            this.selectedSeat = selectedSeat;
+        }
+
+        public String getRoomType() {
+            return roomType;
+        }
+
+        public void setRoomType(String roomType) {
+            this.roomType = roomType;
+        }
+
+        public boolean isPremiumUpgrade() {
+            return premiumUpgrade;
+        }
+
+        public void setPremiumUpgrade(boolean premiumUpgrade) {
+            this.premiumUpgrade = premiumUpgrade;
+        }
 
         public String getExpectedRefundDate() {
             return expectedRefundDate;

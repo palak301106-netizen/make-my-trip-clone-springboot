@@ -39,6 +39,9 @@ public class BookingService {
                 booking.setBookingId(flightId);
                 booking.setDate(LocalDate.now().toString());
                 booking.setQuantity(seats);
+                booking.setSelectedSeat("12A");
+                booking.setPremiumUpgrade(false);
+                booking.setRoomType(null);
                 booking.setTotalPrice(price);
                 booking.setBookingStatus("CONFIRMED");
                 booking.setPaymentStatus("PAID");
@@ -48,6 +51,7 @@ public class BookingService {
                 booking.setCancelledAt(null);
                 booking.setExpectedRefundDate(null);
                 user.getBookings().add(booking);
+
                 userRepository.save(user);
                 return booking;
             } else {
@@ -72,6 +76,9 @@ public class BookingService {
                 booking.setBookingId(hotelId);
                 booking.setDate(LocalDate.now().toString());
                 booking.setQuantity(rooms);
+                booking.setRoomType("Deluxe");
+                booking.setSelectedSeat(null);
+                booking.setPremiumUpgrade(false);
                 booking.setTotalPrice(price);
                 booking.setBookingStatus("CONFIRMED");
                 booking.setPaymentStatus("PAID");
