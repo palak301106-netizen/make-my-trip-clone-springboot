@@ -17,7 +17,7 @@ import { Plane } from "lucide-react";
 
 import axios from "axios"
 
-const BACKEND_URL = "https://make-my-trip-clone-springboot-4-qxnn.onrender.com"
+const BACKEND_URL = "https://make-my-trip-clone-springboot-5-nwsl.onrender.com"
 
 export const login = async (
   email: string,
